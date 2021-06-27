@@ -14,11 +14,11 @@ The library is currently only compatible with .NET 5.0 projects
 
 ## Instalation
 ```
-PM> Install-Package LoggerLib -Version 1.0.4
+PM> Install-Package LoggerLib -Version 1.1.0
 ```
 or
 ```
-> dotnet add package LoggerLib --version 1.0.4
+> dotnet add package LoggerLib --version 1.1.0
 ```
 
 ## Usage
