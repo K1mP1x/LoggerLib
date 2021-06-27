@@ -1,3 +1,8 @@
+[![ISSUES](https://img.shields.io/github/issues/K1mP1x/LoggerLib)](https://github.com/K1mP1x/LoggerLib/issues)
+[![STARS](https://img.shields.io/github/stars/K1mP1x/LoggerLib)](https://github.com/K1mP1x/LoggerLib)
+[![LICENSE](https://img.shields.io/github/license/K1mP1x/LoggerLib)](https://github.com/K1mP1x/LoggerLib/blob/main/LICENSE.txt)
+[![NUGET](https://shields.io/nuget/v/loggerlib.svg)](https://www.nuget.org/packages/LoggerLib)
+
 ## General info 
 Logger for your C# project<br>
 Saving logs to the console and to `.log` or `.txt` files.<br>
