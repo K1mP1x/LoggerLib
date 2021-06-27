@@ -67,7 +67,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 services.AddLogging(loggingBuilder =>
     loggingBuilder.AddLoggerBuilder(new LoggerFactoryConfiguration
     {
-        RequiredLogLevel = LogLevel.Information
+        RequiredLogLevel = LogType.Information
     }));
 ```
 
@@ -75,8 +75,8 @@ services.AddLogging(loggingBuilder =>
 ```
 new LoggerFactoryConfiguration
 {
-    RequiredLogLevel = LogLevel.Information,
-    MinimumLogLevel = LogLevel.Trace,
+    RequiredLogLevel = LogType.Information,
+    MinimumLogLevel = LogType.Trace,
     LogAllLogLevels = false
 }
 ```
