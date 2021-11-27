@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logger", "src\Logger\Logger.csproj", "{83D7A5C4-B6F0-4AA1-BCB5-9422DAC7600A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleApp", "Example\ExampleApp\ExampleApp.csproj", "{D15B20E7-4AA2-4CA7-9775-8F4AB4CF9DDE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{83D7A5C4-B6F0-4AA1-BCB5-9422DAC7600A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83D7A5C4-B6F0-4AA1-BCB5-9422DAC7600A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83D7A5C4-B6F0-4AA1-BCB5-9422DAC7600A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83D7A5C4-B6F0-4AA1-BCB5-9422DAC7600A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D15B20E7-4AA2-4CA7-9775-8F4AB4CF9DDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D15B20E7-4AA2-4CA7-9775-8F4AB4CF9DDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D15B20E7-4AA2-4CA7-9775-8F4AB4CF9DDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D15B20E7-4AA2-4CA7-9775-8F4AB4CF9DDE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
