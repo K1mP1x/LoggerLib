@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Logger.Data.Enum;
+using Logger.Data.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace Logger.Data
+namespace Logger.Data.Context
 {
     public class LoggerContext : DbContext
     {
@@ -16,7 +17,7 @@ namespace Logger.Data
                 .Property(e => e.LogType)
                 .HasConversion(
                     v => v.ToString(),
-                    v => (LogType)Enum.Parse(typeof(LogType), v));
+                    v => (LogType)System.Enum.Parse(typeof(LogType), v));
         }
     }
 }

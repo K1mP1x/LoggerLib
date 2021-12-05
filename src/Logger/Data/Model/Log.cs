@@ -1,6 +1,7 @@
 ﻿using System;
+using Logger.Data.Enum;
 
-namespace Logger.Data
+namespace Logger.Data.Model
 {
     public class Log
     {

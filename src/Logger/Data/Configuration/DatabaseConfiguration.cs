@@ -1,4 +1,4 @@
-﻿namespace Logger.Data
+﻿namespace Logger.Data.Configuration
 {
     public class DatabaseConfiguration
     {

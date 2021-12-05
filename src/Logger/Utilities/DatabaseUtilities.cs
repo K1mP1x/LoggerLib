@@ -1,5 +1,6 @@
 ﻿using System;
-using Logger.Data;
+using Logger.Data.Configuration;
+using Logger.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MySqlConnector;
@@ -15,7 +16,7 @@ namespace Logger.Utilities
             switch (LoggerConfiguration.DbConfig!.DbType) 
             { 
                 case DatabaseType.MySql: 
-                    var connectionString = DatabaseUtilities.GetMysqlConnectionString(LoggerConfiguration.DbConfig); 
+                    var connectionString = GetMysqlConnectionString(LoggerConfiguration.DbConfig); 
                     services.AddDbContext<LoggerContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))); 
                     break;
                 default: 
@@ -25,8 +26,8 @@ namespace Logger.Utilities
 
             return serviceProvider.GetService<LoggerContext>(); // To create logs table
         }
-        
-        internal static string GetMysqlConnectionString(DatabaseConfiguration config)
+
+        private static string GetMysqlConnectionString(DatabaseConfiguration config)
         {
             return new MySqlConnectionStringBuilder()
             {

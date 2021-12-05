@@ -1,23 +1,23 @@
 ﻿using System;
 using System.IO;
-using Logger.Data;
+using Logger.Data.Configuration;
+using Logger.Data.Context;
+using Logger.Data.Enum;
+using Logger.Data.Model;
 using Logger.Utilities;
 using MySqlConnector;
 
 namespace Logger.Core
 {
-    internal class Core
+    internal static class Core
     {
-        private static object? _saveLock;
-        
-        public Core() =>
-            _saveLock = new object();
+        private static readonly object? SaveLock = new ();
 
-        public void Log(LogType logType, string message, bool logToConsole, bool logToFile, bool logToDb, LoggerContext? dbContext)
+        public static void Log(LogType logType, string message, bool logToConsole, bool logToFile, bool logToDb, LoggerContext? dbContext)
         {
             FileUtilities.CheckOldFiles();
 
-            lock (_saveLock!)
+            lock (SaveLock!)
             {
                 var logDate = LoggerUtilities.GetLogDate();
                 var logTime = LoggerUtilities.GetLogTime();

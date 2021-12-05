@@ -1,5 +1,6 @@
 ﻿using System;
-using Logger.Data;
+using Logger.Data.Configuration;
+using Logger.Data.Enum;
 using Microsoft.Extensions.Logging;
 
 namespace Logger.Utilities

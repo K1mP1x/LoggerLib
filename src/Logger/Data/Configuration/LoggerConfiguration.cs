@@ -1,4 +1,6 @@
-﻿namespace Logger.Data
+﻿using Logger.Data.Enum;
+
+namespace Logger.Data.Configuration
 {
     public static class LoggerConfiguration
     {

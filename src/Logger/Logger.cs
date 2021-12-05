@@ -1,5 +1,7 @@
 ﻿using System;
-using Logger.Data;
+using Logger.Data.Configuration;
+using Logger.Data.Context;
+using Logger.Data.Enum;
 using Logger.Utilities;
 using MySqlConnector;
 
@@ -10,8 +12,6 @@ namespace Logger
         private static bool _initialized;
         
         private static LoggerContext? _context;
-        
-        private static Core.Core? _core;
 
         public static void Init()
         {
@@ -22,8 +22,6 @@ namespace Logger
             }
 
             FileUtilities.SetDirectory();
-            
-            _core = new Core.Core();
             _initialized = true;
 
             if (LoggerConfiguration.DbConfig != null)
@@ -99,7 +97,7 @@ namespace Logger
 
             if (!LoggerUtilities.CanBeLogged(logType)) return;
 
-            _core!.Log(logType, message, logToConsole, logToFile, logToDb, _context);
+            Core.Core.Log(logType, message, logToConsole, logToFile, logToDb, _context);
         }
     }
 }

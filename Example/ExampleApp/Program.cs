@@ -1,4 +1,5 @@
-﻿using Logger.Data;
+﻿using Logger.Data.Configuration;
+using Logger.Data.Enum;
 
 // Set logging style
 // You can choose in: LogStyle.Default, LogStyle.Minimalistic, LogStyle.OneColor and LogStyle.Gray

@@ -1,6 +1,6 @@
 ﻿using System.IO;
 using System.IO.Compression;
-using Logger.Data;
+using Logger.Data.Configuration;
 
 namespace Logger.Utilities
 {
@@ -33,7 +33,7 @@ namespace Logger.Utilities
         
         private static void ArchiveFile(FileSystemInfo file)
         {
-            var path = FileUtilities.GetPathToLogFile(file.Name);
+            var path = GetPathToLogFile(file.Name);
 
             using (var modFile = ZipFile.Open($"{Path.ChangeExtension(path, null)}.zip", ZipArchiveMode.Update))
             {
