@@ -9,6 +9,11 @@ namespace Logger.Utilities
 {
     internal static class DatabaseUtilities
     {
+        /// <summary>
+        /// Configure connection to the database
+        /// </summary>
+        /// <returns>LoggerContext instance</returns>
+        /// <exception cref="ArgumentOutOfRangeException">Non supported database type</exception>
         internal static LoggerContext? ConfigureDatabaseConnection()
         {
             var services = new ServiceCollection();
@@ -27,6 +32,11 @@ namespace Logger.Utilities
             return serviceProvider.GetService<LoggerContext>(); // To create logs table
         }
 
+        /// <summary>
+        /// Generate MySQL connection string
+        /// </summary>
+        /// <param name="config">Database onfiguration</param>
+        /// <returns>Connection string</returns>
         private static string GetMysqlConnectionString(DatabaseConfiguration config)
         {
             return new MySqlConnectionStringBuilder()

@@ -13,6 +13,15 @@ namespace Logger.Core
     {
         private static readonly object? SaveLock = new ();
 
+        /// <summary>
+        /// Logging method
+        /// </summary>
+        /// <param name="logType">LogType</param>
+        /// <param name="message">Log message</param>
+        /// <param name="logToConsole">Whether the log is to be sent to the console</param>
+        /// <param name="logToFile">Whether the log is to be sent to the file</param>
+        /// <param name="logToDb">Whether the log is to be sent to the database</param>
+        /// <param name="dbContext">DbContext when using a database</param>
         public static void Log(LogType logType, string message, bool logToConsole, bool logToFile, bool logToDb, LoggerContext? dbContext)
         {
             FileUtilities.CheckOldFiles();
@@ -35,6 +44,13 @@ namespace Logger.Core
             }
         }
 
+        /// <summary>
+        /// Log to the console
+        /// </summary>
+        /// <param name="message">Log message</param>
+        /// <param name="time">Log time</param>
+        /// <param name="logType">LogType</param>
+        /// <exception cref="ArgumentOutOfRangeException">Unsupported LogStyle</exception>
         private static void ConsoleLog(string message, string time, LogType logType)
         {
             var prefix = LoggerUtilities.GetLogPrefix(logType);
@@ -78,6 +94,12 @@ namespace Logger.Core
             }
         }
 
+        /// <summary>
+        /// Log to the file
+        /// </summary>
+        /// <param name="message">Log message</param>
+        /// <param name="time">Log message</param>
+        /// <param name="logType">LogType</param>
         private static void FileLog(string message, string time, LogType logType)
         {
             var fileName = FileUtilities.GetLogFileName();
@@ -100,6 +122,13 @@ namespace Logger.Core
             sw.Close();
         }
 
+        /// <summary>
+        /// Log to the database
+        /// </summary>
+        /// <param name="message">Log message</param>
+        /// <param name="time">Log time</param>
+        /// <param name="logType">LogType</param>
+        /// <param name="context">DbContext</param>
         private static void DatabaseLog(string message, string time, LogType logType, LoggerContext context)
         {
             if (!context.Database.CanConnect())

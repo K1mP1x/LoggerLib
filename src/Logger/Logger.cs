@@ -13,6 +13,9 @@ namespace Logger
         
         private static LoggerContext? _context;
 
+        /// <summary>
+        /// Initialize settings
+        /// </summary>
         public static void Init()
         {
             if (_initialized)
