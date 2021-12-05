@@ -97,6 +97,8 @@ namespace Logger
                 return;
             }
 
+            if (!LoggerUtilities.CanBeLogged(logType)) return;
+
             _core!.Log(logType, message, logToConsole, logToFile, logToDb, _context);
         }
     }

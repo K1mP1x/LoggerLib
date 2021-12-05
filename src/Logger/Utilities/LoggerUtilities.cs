@@ -61,6 +61,17 @@ namespace Logger.Utilities
             
             Console.ForegroundColor = originalColor;
         }
+
+        internal static bool CanBeLogged(LogType logType)
+        {
+            if (LoggerConfiguration.LogAllLogLevels)
+                return true;
+
+            if (LoggerConfiguration.RequiredLogLevel != null)
+                return logType == LoggerConfiguration.RequiredLogLevel;
+
+            return (int) LoggerConfiguration.MinimumLogLevel <= (int) logType;
+        }
         
         internal static string GetLogTime() => ParseDateTime("H:mm:ss");
 
