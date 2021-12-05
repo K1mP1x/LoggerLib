@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
-using System.Threading.Tasks;
 using Logger.Data;
 using Logger.Utilities;
+using MySqlConnector;
 
 namespace Logger.Core
 {
@@ -21,10 +21,17 @@ namespace Logger.Core
             {
                 var logDate = LoggerUtilities.GetLogDate();
                 var logTime = LoggerUtilities.GetLogTime();
-                
-                if (logToConsole) ConsoleLog(message, logTime, logType);
-                if (logToFile) FileLog(message, logTime, logType);
-                if (logToDb && dbContext != null) DatabaseLog(message, $"{logDate} {logTime}", logType, dbContext);
+
+                try
+                {
+                    if (logToConsole) ConsoleLog(message, logTime, logType);
+                    if (logToFile) FileLog(message, logTime, logType);
+                    if (logToDb && dbContext != null) DatabaseLog(message, $"{logDate} {logTime}", logType, dbContext);
+                }
+                catch (Exception e) when (e is MySqlException or IOException or InvalidOperationException)
+                {
+                    Logger.Critical(e);
+                }
             }
         }
 
@@ -95,6 +102,12 @@ namespace Logger.Core
 
         private static void DatabaseLog(string message, string time, LogType logType, LoggerContext context)
         {
+            if (!context.Database.CanConnect())
+            {
+                Logger.Error("A connection to the database could not be established");
+                return;
+            }
+            
             var log = new Log()
             {
                 LogType = logType,
