@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logger", "src\Logger\Logger
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleApp", "Example\ExampleApp\ExampleApp.csproj", "{D15B20E7-4AA2-4CA7-9775-8F4AB4CF9DDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerTests", "LoggerTests\LoggerTests.csproj", "{BDE1DADE-7BD9-4F1C-9D7E-C5C47D2E8101}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerTests", "src\LoggerTests\LoggerTests.csproj", "{BDE1DADE-7BD9-4F1C-9D7E-C5C47D2E8101}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleWebApp", "Example\ExampleWebApp\ExampleWebApp.csproj", "{6C273D1C-762D-4C7A-B0A9-FE67BB5D1569}"
 EndProject
