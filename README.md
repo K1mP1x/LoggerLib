@@ -5,20 +5,17 @@
 
 ## General info 
 Logger for your C# project<br>
-Saving logs to the console and to `.log` or `.txt` files.<br>
+Saving logs to the console and to the `.log` or `.txt` files.<br>
+You can also save logs to the database (currently only MySQL is supported).<br>
 Old files are backed up to reduce the size of the logs.<br>
-The library is currently only compatible with .NET 5.0 projects
 
-## Requirements
-* .NET 5.0
-
-## Instalation
+## Installation
 ```
-PM> Install-Package LoggerLib -Version 1.1.0
+PM> Install-Package LoggerLib -Version 1.2.0
 ```
 or
 ```
-> dotnet add package LoggerLib --version 1.1.0
+> dotnet add package LoggerLib --version 1.2.0
 ```
 
 ## Usage
@@ -28,9 +25,13 @@ or
 static void Main(string[] args)
 {
     // If you want to change log directory or log extension
-    LoggerConfig.LogsDir = "SomePath/Logs"; // Default: "logs"
-    LoggerConfig.LogsExtension = "txt"; // Recommended: `log` or `txt` | Default: "log"
+    LoggerConfiguration.LogsDir = "SomePath/Logs"; // Default: "logs"
+    LoggerConfiguration.LogsExtension = "txt"; // Recommended: `log` or `txt` | Default: "log"
     
+    // What type of logs should be logged
+    LoggerConfiguration.MinimumLogLevel = LogType.Information;
+    
+    // Initialize logger
     Logger.Init();
 
     Logger.Info("Message");
@@ -45,41 +46,20 @@ static void Main(string[] args)
 }
 ```
 #### Note
-You don't need to declare the `LogsDir` and `LogsExtension` values. The default values will then be set.
+You don't need to declare `LoggerConfiguration`, values will be assigned by default.
 
 ### Example 2
-If you want this to be your main logger, make these changes.
+If you want this to be your main logger
+Example in the ASP.NET 6.0
 ```
-public static IHostBuilder CreateHostBuilder(string[] args) =>
-    Host.CreateDefaultBuilder(args)
-        .ConfigureLogging(config =>
-        {
-            config.ClearProviders();
-        })
-        .ConfigureWebHostDefaults(webBuilder =>
-        {
-            webBuilder.UseStartup<Startup>();
-        });
-        
---------------------------------------------------------------
-// In `ConfigureServices`
+var builder = WebApplication.CreateBuilder(args);
+builder.Logging.ClearProviders();
+builder.Host.UseLoggerLib();
 
-services.AddLogging(loggingBuilder =>
-    loggingBuilder.AddLoggerBuilder(new LoggerFactoryConfiguration
-    {
-        RequiredLogLevel = LogType.Information
-    }));
+Logger.Logger.Init();
 ```
 
-### Example `LoggerFactoryConfiguration`
-```
-new LoggerFactoryConfiguration
-{
-    RequiredLogLevel = LogType.Information,
-    MinimumLogLevel = LogType.Trace,
-    LogAllLogLevels = false
-}
-```
+### Check out the full example in the <a href="https://github.com/K1mP1x/LoggerLib/tree/main/Example">Sample Application</a> in the repository
 
 ## Example output
 Example file name
@@ -103,13 +83,27 @@ Example console content
 [15:04:15][INFO] |Microsoft.Hosting.Lifetime| - Application started. Press Ctrl+C to shut down.
 ```
 
-## License
-See LICENSE.txt
+## Ability to change message styles
+```
+// You can choose in: LogStyle.Default, LogStyle.Minimalistic, LogStyle.OneColor and LogStyle.Gray
+LoggerConfiguration.LoggingStyle = LogStyle.Gray;
+```
 
-## Contributing
-1. Fork the repo on GitHub
-2. Clone the project to your own machine
-3. Commit changes to your own branch
-4. Push your work back up to your fork
-5. Submit a Pull request so that we can review your changes
+## Configuring a database connection
+```
+LoggerConfiguration.DbConfig = new DatabaseConfiguration()
+{
+    Database = "logger",
+    Username = "root",
+    Password = "",
+    Host = "localhost",
+    Port = 3306
+};
+```
+The table will be created automatically
 
+
+## See also:
+* ### <a href="https://k1mp1x.github.io/LoggerLib/">Documentation</a>
+* ### <a href="https://github.com/K1mP1x/LoggerLib/blob/main/LICENSE.txt">License</a>
+* ### <a href="https://github.com/K1mP1x/LoggerLib/blob/main/CONTRIBUTING.md">Contributing</a>
