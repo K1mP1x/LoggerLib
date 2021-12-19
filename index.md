@@ -101,9 +101,8 @@ LoggerConfiguration.DbConfig = new DatabaseConfiguration()
 ```
 
 * Initializing
-```
 Logger.Init();
-```
+
 
 ### Logging
 
