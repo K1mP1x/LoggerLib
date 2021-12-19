@@ -1,37 +1,124 @@
-## Welcome to GitHub Pages
+## Documentation
 
-You can use the [editor on GitHub](https://github.com/K1mP1x/LoggerLib/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+### General information
+* Currently only MySQL is supported
+* All configuration data must be declared before logger initialization
+* You can see usage examples in the `#QuickStart` section, in `README.md` in the library repository, and in the `ExampleApp` project
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Quick start
+```
+using Logger.Data.Configuration;
+using Logger.Data.Enum;
 
-### Markdown
+LoggerConfiguration.LoggingStyle = LogStyle.Gray;
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+LoggerConfiguration.LogsDir = "logs"; 
+LoggerConfiguration.LogsExtension = "txt"; 
 
-```markdown
-Syntax highlighted code block
+LoggerConfiguration.MinimumLogLevel = LogType.Information;
 
-# Header 1
-## Header 2
-### Header 3
+LoggerConfiguration.DbConfig = new DatabaseConfiguration()
+{
+    Database = "logger",
+    Username = "root",
+    Password = "",
+    Host = "localhost",
+    Port = 3306
+};
 
-- Bulleted
-- List
+Logger.Logger.Init();
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+Logger.Logger.Info("asd", true, true, true);
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+### Log types
+* Trace
+* Debug
+* Information
+* Warning
+* Error
+* Critical
+* None
 
-### Jekyll Themes
+#### Using example
+```
+LogType.Information
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/K1mP1x/LoggerLib/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### Log styles
+* Default
+* Gray
+* OneColor
+* Minimalistic
 
-### Support or Contact
+#### Using example
+```
+LogStyle.Gray
+```
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+### Configuration
+
+* Login style setting (differ in format or color)
+```
+LoggerConfiguration.LoggingStyle = LogStyle.Gray;
+```
+
+* Log path change
+```
+LoggerConfiguration.LogsDir = "logs"; // Default: "logs"
+```
+
+* Log extension change
+```
+LoggerConfiguration.LogsExtension = "txt"; // Default: "log"
+```
+
+* Minimum log type registered
+```
+LoggerConfiguration.MinimumLogLevel = LogType.Information;
+```
+
+* Require a specific type of logs
+```
+LoggerConfiguration.RequiredLogLevel = LogType.Critical;
+```
+
+* Whether all log types are to be displayed
+```
+LoggerConfiguration.LogAllLogLevels = true;
+```
+
+* Database configuration (currently only MySQL is supported)
+```
+LoggerConfiguration.DbConfig = new DatabaseConfiguration()
+{
+    Database = "logger",
+    Username = "root",
+    Password = "",
+    Host = "localhost",
+    Port = 3306
+};
+```
+
+* Initializing
+```
+Logger.Init();
+```
+
+### Logging
+
+* Available methods
+```
+Logger.Info(string message, bool logToConsole = true, bool logToFile = true, bool logToDb = false)
+Logger.Warning(string message, bool logToConsole = true, bool logToFile = true, bool logToDb = false)
+Logger.Error(string message, bool logToConsole = true, bool logToFile = true, bool logToDb = false)
+Logger.Debug(string message, bool logToConsole = true, bool logToFile = true, bool logToDb = false)
+Logger.Critical(string message, bool logToConsole = true, bool logToFile = true, bool logToDb = false)
+
+Logger.Info(Exception e, bool logToConsole = true, bool logToFile = true, bool logToDb = false)
+Logger.Warning(Exception e, bool logToConsole = true, bool logToFile = true, bool logToDb = false)
+Logger.Error(Exception e, bool logToConsole = true, bool logToFile = true, bool logToDb = false)
+Logger.Debug(Exception e, bool logToConsole = true, bool logToFile = true, bool logToDb = false)
+Logger.Critical(Exception e, bool logToConsole = true, bool logToFile = true, bool logToDb = false)
+```
+
