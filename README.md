@@ -1,6 +1,6 @@
-[![ISSUES](https://img.shields.io/github/issues/K1mP1x/LoggerLib)](https://github.com/K1mP1x/LoggerLib/issues)
-[![STARS](https://img.shields.io/github/stars/K1mP1x/LoggerLib)](https://github.com/K1mP1x/LoggerLib)
-[![LICENSE](https://img.shields.io/github/license/K1mP1x/LoggerLib)](https://github.com/K1mP1x/LoggerLib/blob/main/LICENSE.txt)
+[![ISSUES](https://img.shields.io/github/issues/KimPiks/LoggerLib)](https://github.com/KimPiks/LoggerLib/issues)
+[![STARS](https://img.shields.io/github/stars/KimPiks/LoggerLib)](https://github.com/KimPiks/LoggerLib)
+[![LICENSE](https://img.shields.io/github/license/KimPiks/LoggerLib)](https://github.com/KimPiks/LoggerLib/blob/main/LICENSE.txt)
 [![NUGET](https://shields.io/nuget/v/loggerlib.svg)](https://www.nuget.org/packages/LoggerLib)
 
 ## General info 
@@ -59,7 +59,7 @@ builder.Host.UseLoggerLib();
 Logger.Logger.Init();
 ```
 
-### Check out the full example in the <a href="https://github.com/K1mP1x/LoggerLib/tree/main/Example">Sample Application</a> in the repository
+### Check out the full example in the <a href="https://github.com/KimPiks/LoggerLib/tree/main/Example">Sample Application</a> in the repository
 
 ## Example output
 Example file name
@@ -104,6 +104,6 @@ The table will be created automatically
 
 
 ## See also:
-* ### <a href="https://k1mp1x.github.io/LoggerLib/">Documentation</a>
-* ### <a href="https://github.com/K1mP1x/LoggerLib/blob/main/LICENSE.txt">License</a>
-* ### <a href="https://github.com/K1mP1x/LoggerLib/blob/main/CONTRIBUTING.md">Contributing</a>
+* ### <a href="https://kimpiks.github.io/LoggerLib/">Documentation</a>
+* ### <a href="https://github.com/KimPiks/LoggerLib/blob/main/LICENSE.txt">License</a>
+* ### <a href="https://github.com/KimPiks/LoggerLib/blob/main/CONTRIBUTING.md">Contributing</a>
