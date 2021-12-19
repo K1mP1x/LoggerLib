@@ -15,9 +15,11 @@ namespace Logger.Core
 
         public IDisposable BeginScope<TState>(TState state) => default!;
 
-        [Obsolete("This method is implemented in the LoggerUtilities class as CanBeLogged(LogType);")]
-        public bool IsEnabled(LogLevel logLevel) =>
-            throw new NotImplementedException();
+        public bool IsEnabled(LogLevel logLevel)
+        {
+            var logType = LoggerUtilities.ConvertLogType(logLevel);
+            return LoggerUtilities.CanBeLogged(logType);
+        }
 
         public void Log<TState>(
             LogLevel logLevel,
