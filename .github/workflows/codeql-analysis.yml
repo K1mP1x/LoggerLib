@@ -69,7 +69,7 @@ jobs:
     #    uses a compiled language
 
     - run: |
-       dotnet build Example/ExampleApp/ExampleApp.csproj
+       dotnet build /p:UseSharedCompilation=false 
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
