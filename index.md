@@ -31,6 +31,16 @@ Logger.Logger.Init();
 Logger.Logger.Info("asd", true, true, true);
 ```
 
+### Using in ASP.NET
+```
+// Program.cs
+var builder = WebApplication.CreateBuilder(args);
+builder.Logging.ClearProviders();
+builder.Host.UseLoggerLib();
+
+Logger.Logger.Init();
+```
+
 ### Log types
 * Trace
 * Debug
@@ -101,8 +111,9 @@ LoggerConfiguration.DbConfig = new DatabaseConfiguration()
 ```
 
 * Initializing
+```
 Logger.Init();
-
+```
 
 ### Logging
 
@@ -113,7 +124,8 @@ Logger.Warning(string message, bool logToConsole = true, bool logToFile = true, 
 Logger.Error(string message, bool logToConsole = true, bool logToFile = true, bool logToDb = false);
 Logger.Debug(string message, bool logToConsole = true, bool logToFile = true, bool logToDb = false);
 Logger.Critical(string message, bool logToConsole = true, bool logToFile = true, bool logToDb = false);
-
+```
+```
 Logger.Info(Exception e, bool logToConsole = true, bool logToFile = true, bool logToDb = false);
 Logger.Warning(Exception e, bool logToConsole = true, bool logToFile = true, bool logToDb = false);
 Logger.Error(Exception e, bool logToConsole = true, bool logToFile = true, bool logToDb = false);
