@@ -6,16 +6,16 @@
         <Nullable>enable</Nullable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageId>LoggerLib</PackageId>
-        <PackageVersion>1.2.0</PackageVersion>
+        <PackageVersion>1.2.1</PackageVersion>
         <Title>LoggerLib</Title>
-        <Authors>KimPix</Authors>
+        <Authors>Kamil Prorok</Authors>
         <Description>Library for saving logs. It allows you to write to text files, console and database. Old log files are archived daily to save disk space. Details available at the project's address: https://github.com/K1mP1x/LoggerLib</Description>
-        <Copyright>KimPix</Copyright>
-        <PackageProjectUrl>https://github.com/K1mP1x/LoggerLib</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/K1mP1x/LoggerLib</RepositoryUrl>
+        <Copyright>Kamil Prorok</Copyright>
+        <PackageProjectUrl>https://github.com/KimPiks/LoggerLib</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/KimPiks/LoggerLib</RepositoryUrl>
         <RepositoryType>GIT</RepositoryType>
         <PackageTags>logger logs database file archive console</PackageTags>
-        <PackageLicenseUrl>https://github.com/K1mP1x/LoggerLib/blob/main/LICENSE.txt</PackageLicenseUrl>
+        <PackageLicenseUrl>https://github.com/KimPiks/LoggerLib/blob/main/LICENSE.txt</PackageLicenseUrl>
     </PropertyGroup>
 
     <ItemGroup>
