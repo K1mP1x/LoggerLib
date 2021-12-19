@@ -109,16 +109,16 @@ Logger.Init();
 
 * Available methods
 ```
-Logger.Info(string message, bool logToConsole = true, bool logToFile = true, bool logToDb = false)
-Logger.Warning(string message, bool logToConsole = true, bool logToFile = true, bool logToDb = false)
-Logger.Error(string message, bool logToConsole = true, bool logToFile = true, bool logToDb = false)
-Logger.Debug(string message, bool logToConsole = true, bool logToFile = true, bool logToDb = false)
-Logger.Critical(string message, bool logToConsole = true, bool logToFile = true, bool logToDb = false)
+Logger.Info(string message, bool logToConsole = true, bool logToFile = true, bool logToDb = false);
+Logger.Warning(string message, bool logToConsole = true, bool logToFile = true, bool logToDb = false);
+Logger.Error(string message, bool logToConsole = true, bool logToFile = true, bool logToDb = false);
+Logger.Debug(string message, bool logToConsole = true, bool logToFile = true, bool logToDb = false);
+Logger.Critical(string message, bool logToConsole = true, bool logToFile = true, bool logToDb = false);
 
-Logger.Info(Exception e, bool logToConsole = true, bool logToFile = true, bool logToDb = false)
-Logger.Warning(Exception e, bool logToConsole = true, bool logToFile = true, bool logToDb = false)
-Logger.Error(Exception e, bool logToConsole = true, bool logToFile = true, bool logToDb = false)
-Logger.Debug(Exception e, bool logToConsole = true, bool logToFile = true, bool logToDb = false)
-Logger.Critical(Exception e, bool logToConsole = true, bool logToFile = true, bool logToDb = false)
+Logger.Info(Exception e, bool logToConsole = true, bool logToFile = true, bool logToDb = false);
+Logger.Warning(Exception e, bool logToConsole = true, bool logToFile = true, bool logToDb = false);
+Logger.Error(Exception e, bool logToConsole = true, bool logToFile = true, bool logToDb = false);
+Logger.Debug(Exception e, bool logToConsole = true, bool logToFile = true, bool logToDb = false);
+Logger.Critical(Exception e, bool logToConsole = true, bool logToFile = true, bool logToDb = false);
 ```
 
