@@ -20,7 +20,7 @@ namespace Logger
         {
             if (_initialized)
             {
-                Console.WriteLine("Logger has already been initialized");
+                Warning("Logger has already been initialized", logToFile: false);
                 return;
             }
 

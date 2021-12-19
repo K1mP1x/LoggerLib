@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.IO.Compression;
 using Logger.Data.Configuration;
 
@@ -11,8 +12,15 @@ namespace Logger.Utilities
         /// </summary>
         internal static void SetDirectory()
         {
-            if (!Directory.Exists(LoggerConfiguration.LogsDir))
-                Directory.CreateDirectory(LoggerConfiguration.LogsDir);
+            try
+            {
+                if (!Directory.Exists(LoggerConfiguration.LogsDir))
+                    Directory.CreateDirectory(LoggerConfiguration.LogsDir);
+            }
+            catch (Exception e) when (e is IOException or UnauthorizedAccessException)
+            {
+                Logger.Critical(e, logToFile: false);
+            }
         }
         
         /// <summary>
@@ -41,12 +49,19 @@ namespace Logger.Utilities
         {
             var path = GetPathToLogFile(file.Name);
 
-            using (var modFile = ZipFile.Open($"{Path.ChangeExtension(path, null)}.zip", ZipArchiveMode.Update))
+            try
             {
-                modFile.CreateEntryFromFile(file.FullName, file.Name, CompressionLevel.Fastest);
+                using (var modFile = ZipFile.Open($"{Path.ChangeExtension(path, null)}.zip", ZipArchiveMode.Update))
+                {
+                    modFile.CreateEntryFromFile(file.FullName, file.Name, CompressionLevel.Fastest);
+                }
+            
+                File.Delete(file.FullName);
             }
-
-            File.Delete(file.FullName);
+            catch (Exception e) when (e is IOException or UnauthorizedAccessException or FileNotFoundException)
+            {
+                Logger.Critical(e, logToFile: false);
+            }
         }
         
         /// <summary>
