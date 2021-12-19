@@ -35,7 +35,7 @@ namespace Logger.Utilities
         /// <summary>
         /// Generate MySQL connection string
         /// </summary>
-        /// <param name="config">Database onfiguration</param>
+        /// <param name="config">Database configuration</param>
         /// <returns>Connection string</returns>
         private static string GetMysqlConnectionString(DatabaseConfiguration config)
         {
