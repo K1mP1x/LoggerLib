@@ -6,7 +6,7 @@
 ## General info 
 Logger for your C# project<br>
 Saving logs to the console and to the `.log` or `.txt` files.<br>
-You can also save logs to the database (currently only MySQL is supported).<br>
+You can also save logs to the database (MySQL and PostgreqSQL).<br>
 Old files are backed up to reduce the size of the logs.<br>
 
 ## Installation
@@ -93,6 +93,7 @@ LoggerConfiguration.LoggingStyle = LogStyle.Gray;
 ```
 LoggerConfiguration.DbConfig = new DatabaseConfiguration()
 {
+    DbType = DatabaseType.MySql,
     Database = "logger",
     Username = "root",
     Password = "",
@@ -100,7 +101,7 @@ LoggerConfiguration.DbConfig = new DatabaseConfiguration()
     Port = 3306
 };
 ```
-The table will be created automatically
+The table will be created automatically (Database have to be clear!)
 
 
 ## See also:
