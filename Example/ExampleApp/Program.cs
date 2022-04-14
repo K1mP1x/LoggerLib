@@ -16,10 +16,11 @@ LoggerConfiguration.MinimumLogLevel = LogType.Information;
 // Currently the logger only supports MySQL
 LoggerConfiguration.DbConfig = new DatabaseConfiguration()
 {
-    Database = "logger",
+    DbType = DatabaseType.MySql,
+    Database = "test",
     Username = "root",
     Password = "",
-    Host = "localhost",
+    Host = "127.0.0.1",
     Port = 3306
 };
 

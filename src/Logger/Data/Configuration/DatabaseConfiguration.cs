@@ -12,7 +12,7 @@
 
     public enum DatabaseType
     {
-        MySql
-        // SqlServer - Soon
+        MySql,
+        PostgreSQL
     }
 }

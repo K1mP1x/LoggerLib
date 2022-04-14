@@ -140,7 +140,7 @@ namespace Logger.Core
             var log = new Log()
             {
                 LogType = logType,
-                DateTime = DateTime.Parse(time),
+                DateTime = DateTime.Parse(time).ToUniversalTime(),
                 Message = message
             };
 

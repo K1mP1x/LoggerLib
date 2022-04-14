@@ -1,5 +1,4 @@
-﻿using System;
-using Logger.Data.Configuration;
+﻿using Logger.Data.Configuration;
 using Logger.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,12 +16,17 @@ namespace Logger.Utilities
         internal static LoggerContext? ConfigureDatabaseConnection()
         {
             var services = new ServiceCollection();
+            var connectionString = "";
 
             switch (LoggerConfiguration.DbConfig!.DbType) 
-            { 
+            {
                 case DatabaseType.MySql: 
-                    var connectionString = GetMysqlConnectionString(LoggerConfiguration.DbConfig); 
+                    connectionString = GetMysqlConnectionString(LoggerConfiguration.DbConfig); 
                     services.AddDbContext<LoggerContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))); 
+                    break;
+                case DatabaseType.PostgreSQL:
+                    connectionString = GetPostgreSQLConnectionString(LoggerConfiguration.DbConfig);
+                    services.AddDbContext<LoggerContext>(options => options.UseNpgsql(connectionString));
                     break;
                 default: 
                     throw new ArgumentOutOfRangeException(); 
@@ -47,6 +51,20 @@ namespace Logger.Utilities
                 Database = config.Database,
                 Port = config.Port
             }.ToString();
+        }
+
+        /// <summary>
+        /// Generate PostgreSQL connection string
+        /// </summary>
+        /// <param name="config">Database configuration</param>
+        /// <returns>Connection string</returns>
+        private static string GetPostgreSQLConnectionString(DatabaseConfiguration config)
+        {
+            return $"Host={config.Host};" +
+                $"Database={config.Database};" +
+                $"Username={config.Username};" +
+                $"Password={config.Password};" +
+                $"Port={config.Port};";
         }
     }
 }

@@ -117,6 +117,6 @@ namespace Logger.Utilities
         /// </summary>
         /// <param name="pattern">Format pattern</param>
         /// <returns>Formatted datetime</returns>
-        private static string ParseDateTime(string pattern) => string.Format($"{{0:{pattern}}}", DateTime.Now);
+        private static string ParseDateTime(string pattern) => string.Format($"{{0:{pattern}}}", DateTime.UtcNow);
     }
 }
