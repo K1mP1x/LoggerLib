@@ -11,11 +11,11 @@ Old files are backed up to reduce the size of the logs.<br>
 
 ## Installation
 ```
-PM> Install-Package LoggerLib -Version 1.2.1
+PM> Install-Package LoggerLib -Version 1.2.2
 ```
 or
 ```
-> dotnet add package LoggerLib --version 1.2.1
+> dotnet add package LoggerLib --version 1.2.2
 ```
 
 ## Usage
